@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuscany Cycling Itinerary - September 2025</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiVHVzY2FueSBDeWNsaW5nIEl0aW5lcmFyeSIsInNob3J0X25hbWUiOiJUdXNjYW55IEN5Y2xpbmciLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzY2N2VlYSIsInRoZW1lX2NvbG9yIjoiIzY2N2VlYSIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSnhNbUVpSUdobGFXZG9kRDBpTVRFeE1pSStQSEpsWTNRZ2VEMGlNQ0lnZVQwaU1DSWdkMmxrZEdnOUlqWXdNQ0lnYUdWcFoyaDBQU0kyTURBaUlHWnBiR3c5SWlNMk5qZGxaV0VpTHo0OFkybHlZMnhsSUdONFBTSXpNREFpSUdONVBTSXpNREFpSUhJOUlqRTFNQ0lnWm1sc2JEMGlJekkzZEhabU1pSXZQanh3WVhSb0lHUTlJazA0TURBeUlERXpNQ0V6TVRrd09EWTFNU0VoTUVGTWNETXpOU0VoTUV3NE5qVTFJREUwTlMxQk1pVm1RVEE0TVRBNWNsWWtLaTkwTlMxeUxtTkZiSFp5VjBkek1qQTFTekZrZFM5ck9ucGJiSGg1TjFkQ09ESmxYbUlmY2s0dk9sTjJZa2t5Wm1GbFV6UnhYWE41WVdKQlBpSWdabWxzYkQwaUkzZG9hWFJsSWk4K1BDOXpkbWMrIiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
+    
+    <!-- PWA Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSJxMmEiIGhlaWdodD0iMTEyIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzY2N2VlYSIvPjxjaXJjbGUgY3g9IjMwMCIgY3k9IjMwMCIgcj0iMTUwIiBmaWxsPSIjMjc5ZmYyIi8+PHBhdGggZD0iTTgwMiAxMzAhMzE5MDg2NTEhITBBTHAzNTAhITBMODY1NSAxNDUtQTIlZkEwODE5cVZLai90NS1yLm5FbHpyV0dzMjA1SzFkdS9rOnpiTHh5N1dCODJlXmJfc004di9qTjZZYkkzZmFlUzR4X3N5YWJBPSI+PC9wYXRoPjwvc3ZnPg==">
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+        }
+
+        .admin-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .admin-btn, .export-btn, .install-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .admin-btn:hover, .export-btn:hover, .install-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .export-btn {
+            background: #27ae60;
+        }
+
+        .export-btn:hover {
+            background: #229954;
+        }
+
+        .install-btn {
+            background: #3498db;
+            display: none;
+        }
+
+        .install-btn:hover {
+            background: #2980b9;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .trip-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+        }
+
+        .detail-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 1.2em;
+        }
+
+        .total-cost {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border-left-color: #27ae60;
+        }
+
+        .total-cost h3 {
+            color: white;
+        }
+
+        .cost-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .day-block {
+            border: 1px solid #e1e8ed;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .day-header:hover {
+            background: linear-gradient(135deg, #2980b9, #21618c);
+        }
+
+        .day-content {
+            padding: 20px;
+            background: #f8f9fa;
+            display: none;
+        }
+
+        .day-content.active {
+            display: block;
+        }
+
+        .accommodation-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .editable-field {
+            display: inline-block;
+            min-width: 100px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .editable-field.admin-mode {
+            background: #fff3cd;
+            border: 1px dashed #ffc107;
+            cursor: pointer;
+        }
+
+        .editable-field.editing {
+            background: white;
+            border: 2px solid #3498db;
+            outline: none;
+        }
+
+        .route-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .route-btn {
+            background: #34495e;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .route-btn:hover {
+            background: #2c3e50;
+            transform: translateY(-1px);
+        }
+
+        .route-btn.google { background: #db4437; }
+        .route-btn.strava { background: #fc4c02; }
+        .route-btn.komoot { background: #6aa127; }
+
+        .route-btn.editable {
+            position: relative;
+        }
+
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            z-index: 2000;
+        }
+
+        .admin-modal {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .admin-form input, .admin-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .admin-form button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 10px 10px 0;
+            font-weight: 600;
+        }
+
+        .admin-form button:hover {
+            background: #229954;
+        }
+
+        .close-btn {
+            background: #e74c3c !important;
+            float: right;
+        }
+
+        .close-btn:hover {
+            background: #c0392b !important;
+        }
+
+        .link-editor {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            display: none;
+        }
+
+        .link-editor input {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .admin-controls {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 20px;
+                text-align: center;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .trip-details {
+                grid-template-columns: 1fr;
+            }
+
+            .route-links {
+                justify-content: center;
+            }
+
+            .day-header {
+                font-size: 0.9rem;
+            }
+        }
+
+        .toggle-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        @media print {
+            .admin-controls, .admin-panel, .link-editor {
+                display: none !important;
+            }
+            
+            .day-content {
+                display: block !important;
+            }
+            
+            body {
+                background: white;
+            }
+            
+            .section, .header {
+                background: white;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-controls">
+        <button class="install-btn" id="installBtn">Install App</button>
+        <button class="admin-btn" onclick="toggleAdmin()">Admin</button>
+        <button class="export-btn" onclick="exportPDF()">Export PDF</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Tuscany Cycling Itinerary</h1>
+            <p>12–19 September 2025</p>
+            <div class="map-placeholder">
+                <div style="background: linear-gradient(135deg, #74b9ff, #0984e3); color: white; padding: 40px; text-align: center; border-radius: 10px;">
+                    <h3 style="margin-bottom: 15px;">🗺️ Tuscany Cycling Route Map</h3>
+                    <p style="margin-bottom: 20px;">View the complete cycling route from Pisa through Lucca, Florence, Siena, San Gimignano, Volterra, and back to Pisa</p>
+                    <a href="https://www.google.com/maps/d/edit?mid=1sp-h0EeG7kWe_mwgDUj25rWCblWAr2A&ll=43.41696153368579%2C10.488639134399529&z=10" 
+                       target="_blank" 
+                       style="background: white; color: #0984e3; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-block;">
+                        Open Full Route Map
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Trip Details</h2>
+            <div class="trip-details">
+                <div class="detail-card">
+                    <h3><span class="icon">✈️</span> Flight Details</h3>
+                    <div class="editable-field" data-field="flight-outbound">FR5308 Dublin → Pisa: Fri 12 Sep, 08:15-11:55</div>
+                    <div class="editable-field" data-field="flight-return">FR5309 Pisa → Dublin: Fri 19 Sep, 06:05-07:50</div>
+                    <div class="editable-field" data-field="flight-cost" data-cost="173.36">Total: €173.36</div>
+                </div>
+                <div class="detail-card">
+                    <h3><span class="icon">🚴</span> Bike Rental</h3>
+                    <div class="editable-field" data-field="bike-company">Smile & Ride (Removable battery for charging)</div>
+                    <div class="editable-field" data-field="bike-address">Piazza della Stazione, 7, 56121 Pisa PI, Italy</div>
+                    <div class="editable-field" data-field="bike-price" data-cost="258">€258 total</div>
+                </div>
+                <div class="detail-card total-cost">
+                    <h3><span class="icon">💰</span> Total Trip Cost</h3>
+                    <div class="cost-display" id="totalCostDisplay">€0</div>
+                    <div style="margin-top: 10px; font-size: 0.9rem;">
+                        <div>Flights: €<span id="flightCost">173.36</span></div>
+                        <div>Bikes: €<span id="bikeCost">258</span></div>
+                        <div>Accommodation: €<span id="accommodationCost">0</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Daily Itinerary</h2>
+            <div id="itinerary-days"></div>
+        </div>
+    </div>
+
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-modal">
+            <div class="admin-form">
+                <h3>Admin Login</h3>
+                <input type="password" id="adminPassword" placeholder="Enter admin password">
+                <button onclick="login()">Login</button>
+                <button class="close-btn" onclick="closeAdmin()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="link-editor" id="linkEditor">
+        <h3>Edit Route Link</h3>
+        <input type="text" id="linkInput" placeholder="Enter URL">
+        <div style="margin-top: 15px;">
+            <button onclick="saveLink()" style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">Save</button>
+            <button onclick="closeLinkEditor()" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        let isAdminMode = false;
+        let savedTripDetails = {};
+        let currentEditingLink = null;
+        let deferredPrompt;
+        
+        let itineraryData = {
+            days: [
+                {
+                    date: "Fri, Sep 12, 2025",
+                    day: "Day 1",
+                    routeTitle: "Pisa → Lucca (via PisaMover transfer)",
+                    distance: "25.3 km",
+                    accommodation: {
+                        name: "Nonna Adriana",
+                        location: "Lucca",
+                        price: "109",
+                        address: "Via Borgo Giannotti 19, 55100 Lucca, Italy",
+                        checkin: "12:00 - 21:00",
+                        checkout: "08:00 - 11:00",
+                        notes: "Confirmed OK to charge bike and park on balcony. City tax €3.50 × 2 guests × 1 night"
+                    },
+                    lunchStop: "San Giuliano Terme",
+                    pointOfInterest: "Lucca City Walls",
+                    links: {
+                        googleMaps: "https://maps.app.goo.gl/qUgQ7ziQx6wdvEYbA",
+                        strava: "https://www.strava.com/routes/3390702512206484034",
+                        komoot: "https://www.komoot.com/tour/2490550170"
+                    }
+                },
+                {
+                    date: "Sat, Sep 13, 2025",
+                    day: "Day 2",
+                    routeTitle: "Lucca → Empoli",
+                    distance: "48 km",
+                    accommodation: {
+                        name: "Hotel Il Sole",
+                        location: "Empoli",
+                        price: "121",
+                        address: "Piazza Don Minzoni 18, 50053 Empoli, Italy",
+                        checkin: "13:00 - 23:00",
+                        checkout: "Until 10:00",
+                        notes: "Confirmed by WhatsApp - secure bike parking and charging"
+                    },
+                    lunchStop: "Fucecchio",
+                    pointOfInterest: "Historic Empoli Center",
+                    links: {
+                        googleMaps: "https://maps.app.goo.gl/gPdV3CBLLFvFpF7Q9",
+                        strava: "https://www.strava.com/routes/3390709138395490230",
+                        komoot: "https://www.komoot.com/tour/2490589666"
+                    }
+                },
+                {
+                    date: "Sun, Sep 14, 2025",
+                    day: "Day 3",
+                    routeTitle: "Empoli → San Gimignano",
+                    distance: "42 km",
+                    accommodation: {
+                        name: "B&B Donna Nobile",
+                        location: "San Gimignano",
+                        price: "95",
+                        address: "Via delle Romite 15, 53037 San Gimignano",
+                        checkin: "Sep 14",
+                        checkout: "Sep 15",
+                        notes: "Confirmed storage area for bikes and charging. WhatsApp +393477856352"
+                    },
+                    lunchStop: "Certaldo",
+                    pointOfInterest: "Medieval Towers of San Gimignano",
+                    links: {
+                        googleMaps: "https://maps.app.goo.gl/VUgGYYaRyDx8k3v4A",
+                        strava: "https://www.strava.com/routes/3390711079891252272",
+                        komoot: "https://www.komoot.com/tour/2490595665"
+                    }
+                },
+                {
+                    date: "Mon, Sep 15, 2025",
+                    day: "Day 4",
+                    routeTitle: "San Gimignano → Siena",
+                    distance: "58 km",
+                    accommodation: {
+                        name: "B&B I Tetti di Siena",
+                        location: "Siena",
+                        price: "126",
+                        address: "Via del paradiso, 21, 53100 Siena, Italy",
+                        checkin: "15:00 - 00:00",
+                        checkout: "01:00 - 10:00",
+                        notes: "Confirmed secure bike lockup and charging"
+                    },
+                    lunchStop: "Castellina in Chianti",
+                    pointOfInterest: "Piazza del Campo",
+                    links: {
+                        googleMaps: "https://maps.app.goo.gl/QEanGtXkNh6sDv2x8",
+                        strava: "https://www.strava.com/routes/3390717636238635958",
+                        komoot: "https://www.komoot.com/tour/2490688259"
+                    }
+                },
+                {
+                    date: "Tue, Sep 16, 2025",
+                    day: "Day 5",
+                    routeTitle: "Siena → Volterra",
+                    distance: "50 km",
+                    accommodation: {
+                        name: "Villa Nencini",
+                        location: "Volterra",
+                        price: "104",
+                        address: "Borgo Santo Stefano 55, 56048 Volterra, Italy",
+                        checkin: "14:00 - 18:00",
+                        checkout: "07:30 - 10:30",
+                        notes: "Confirmed safe place to leave and charge e-bike"
+                    },
+                    lunchStop: "Casole d'Elsa",
+                    pointOfInterest: "Roman Theatre & Etruscan Museum",
+                    links: {
+                        googleMaps: "https://maps.app.goo.gl/YBaumevWyn2jwJqm9",
+                        strava: "https://maps.app.goo.gl/rsVpqdhfnsia9P4e9",
+                        komoot: "https://komoot.com"
+                    }
+                },
+                {
+                    date: "Wed, Sep 17, 2025",
+                    day: "Day 6",
+                    routeTitle: "Volterra → Quercianella (coastal)",
+                    distance: "55 km",
+                    accommodation: {
+                        name: "Villa Tara",
+                        location: "Quercianella",
+                        price: "113",
+                        address: "11 Via don Italo Gambini, 57128 Quercianella, Italy",
+                        checkin: "13:30 - 22:30",
+                        checkout: "07:30 - 11:30",
+                        notes: "Coastal location with sea views"
+                    },
+                    lunchStop: "Saline di Volterra",
+                    pointOfInterest: "Tuscan Coast Views",
+                    links: {
+                        googleMaps: "https://maps.app.goo.gl/Wx3wC4TmEuyGbUjD8",
+                        strava: "https://strava.com",
+                        komoot: "https://komoot.com"
+                    }
+                },
+                {
+                    date: "Thu, Sep 18, 2025",
+                    day: "Day 7",
+                    routeTitle: "Quercianella → Pisa",
+                    distance: "35 km",
+                    accommodation: {
+                        name: "B&B Residenza d'epoca Piazza Cairoli",
+                        location: "Pisa",
+                        price: "85",
+                        address: "Piazza Cairoli 12, 56127 Pisa, Italy",
+                        checkin: "Sep 18",
+                        checkout: "Sep 19 (early for 06:05 flight)",
+                        notes: "Return bikes to Smile & Ride, taxi to airport"
+                    },
+                    lunchStop: "Cecina",
+                    pointOfInterest: "Leaning Tower of Pisa",
+                    links: {
+                        googleMaps: "https://maps.google.com",
+                        strava: "https://strava.com",
+                        komoot: "https://komoot.com"
+                    }
+                }
+            ]
+        };
+
+        function shareItinerary() {
+            if (navigator.share) {
+                // Native mobile sharing
+                navigator.share({
+                    title: 'Tuscany Cycling Itinerary - September 2025',
+                    text: 'Check out our 7-day cycling tour through Tuscany!',
+                    url: window.location.href
+                }).catch(err => console.log('Share failed'));
+            } else {
+                // Fallback - copy to clipboard
+                const url = window.location.href;
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(url).then(() => {
+                        alert('Link copied to clipboard! Share it with others.');
+                    });
+                } else {
+                    // Final fallback
+                    const textArea = document.createElement('textarea');
+                    textArea.value = url;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Link copied to clipboard! Share it with others.');
+                }
+            }
+        }
+
+        // Service Worker removed - not compatible with artifact environment
+
+        function calculateTotalCost() {
+            let flightCost = 173.36;
+            let bikeCost = 258;
+            let accommodationCost = 0;
+
+            // Calculate accommodation costs
+            itineraryData.days.forEach(day => {
+                const price = parseFloat(day.accommodation.price) || 0;
+                accommodationCost += price;
+            });
+
+            const totalCost = flightCost + bikeCost + accommodationCost;
+
+            // Update display
+            document.getElementById('flightCost').textContent = flightCost.toFixed(2);
+            document.getElementById('bikeCost').textContent = bikeCost.toFixed(0);
+            document.getElementById('accommodationCost').textContent = accommodationCost.toFixed(0);
+            document.getElementById('totalCostDisplay').textContent = '€' + totalCost.toFixed(2);
+        }
+
+        function loadData() {
+            renderItinerary();
+            calculateTotalCost();
+        }
+
+        function saveData() {
+            console.log('Data saved to memory');
+            calculateTotalCost();
+        }
+
+        function makeEditable(element, dayIndex, field) {
+            if (!isAdminMode) return;
+            
+            element.contentEditable = true;
+            element.classList.add('editing');
+            element.focus();
+            
+            element.addEventListener('blur', function() {
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                
+                const newValue = element.textContent.trim();
+                
+                if (dayIndex !== null && field) {
+                    const keys = field.split('.');
+                    let target = itineraryData.days[dayIndex];
+                    
+                    for (let i = 0; i < keys.length - 1; i++) {
+                        target = target[keys[i]];
+                    }
+                    
+                    target[keys[keys.length - 1]] = newValue;
+                    saveData();
+                }
+            });
+            
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    element.blur();
+                }
+            });
+        }
+
+        function renderItinerary() {
+            const container = document.getElementById('itinerary-days');
+            container.innerHTML = '';
+
+            itineraryData.days.forEach((day, index) => {
+                const dayBlock = document.createElement('div');
+                dayBlock.className = 'day-block';
+                dayBlock.innerHTML = `
+                    <div class="day-header" onclick="toggleDay(${index})">
+                        <span>
+                            <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="day">${day.day}</span> — 
+                            <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="date">${day.date}</span>
+                        </span>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="day-content" id="day-content-${index}">
+                        <h3>
+                            <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="routeTitle">${day.routeTitle}</span>
+                        </h3>
+                        <p><strong>Distance:</strong> <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="distance">${day.distance}</span></p>
+                        
+                        <div class="accommodation-card">
+                            <h4>🏨 Accommodation</h4>
+                            <p><strong>Name:</strong> <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="accommodation.name">${day.accommodation.name}</span></p>
+                            <p><strong>Location:</strong> <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="accommodation.location">${day.accommodation.location}</span></p>
+                            <p><strong>Price:</strong> €<span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="accommodation.price">${day.accommodation.price}</span></p>
+                            <p><strong>Address:</strong> <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="accommodation.address">${day.accommodation.address}</span></p>
+                            <p><strong>Check-in/out:</strong> <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="accommodation.checkin">${day.accommodation.checkin}</span> / <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="accommodation.checkout">${day.accommodation.checkout}</span></p>
+                            <p><strong>Notes:</strong> <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="accommodation.notes">${day.accommodation.notes}</span></p>
+                        </div>
+
+                        <p><strong>🍽️ Lunch Stop:</strong> <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="lunchStop">${day.lunchStop}</span></p>
+                        <p><strong>📍 Point of Interest:</strong> <span class="editable-field${isAdminMode ? ' admin-mode' : ''}" data-day="${index}" data-field="pointOfInterest">${day.pointOfInterest}</span></p>
+
+                        <div class="route-links">
+                            <button class="route-btn google ${isAdminMode ? 'editable' : ''}" onclick="openLink('${day.links.googleMaps}', ${index}, 'googleMaps')">Google Maps</button>
+                            <button class="route-btn strava ${isAdminMode ? 'editable' : ''}" onclick="openLink('${day.links.strava}', ${index}, 'strava')">Strava</button>
+                            <button class="route-btn komoot ${isAdminMode ? 'editable' : ''}" onclick="openLink('${day.links.komoot}', ${index}, 'komoot')">Komoot</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(dayBlock);
+            });
+
+            if (isAdminMode) {
+                enableEditing();
+            }
+        }
+
+        function openLink(url, dayIndex, linkType) {
+            if (isAdminMode) {
+                editLink(dayIndex, linkType, url);
+            } else {
+                if (url && url !== 'https://maps.google.com' && url !== 'https://strava.com' && url !== 'https://komoot.com') {
+                    window.open(url, '_blank');
+                }
+            }
+        }
+
+        function editLink(dayIndex, linkType, currentUrl) {
+            currentEditingLink = { dayIndex, linkType };
+            document.getElementById('linkInput').value = currentUrl;
+            document.getElementById('linkEditor').style.display = 'block';
+        }
+
+        function saveLink() {
+            if (currentEditingLink) {
+                const newUrl = document.getElementById('linkInput').value.trim();
+                const { dayIndex, linkType } = currentEditingLink;
+                
+                itineraryData.days[dayIndex].links[linkType] = newUrl;
+                saveData();
+                renderItinerary();
+                closeLinkEditor();
+            }
+        }
+
+        function closeLinkEditor() {
+            document.getElementById('linkEditor').style.display = 'none';
+            currentEditingLink = null;
+        }
+
+        function toggleDay(index) {
+            const content = document.getElementById(`day-content-${index}`);
+            const arrow = content.previousElementSibling.querySelector('.toggle-arrow');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                arrow.classList.remove('rotated');
+            } else {
+                content.classList.add('active');
+                arrow.classList.add('rotated');
+            }
+        }
+
+        function toggleAdmin() {
+            document.getElementById('adminPanel').style.display = 'block';
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('adminPassword').value = '';
+        }
+
+        function login() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === 'tuscany2025') {
+                isAdminMode = true;
+                closeAdmin();
+                renderItinerary();
+                enableEditing();
+                alert('Admin mode enabled! Click on any field to edit, including route links.');
+            } else {
+                alert('Incorrect password!');
+            }
+        }
+
+        function enableEditing() {
+            const editableFields = document.querySelectorAll('.editable-field');
+            editableFields.forEach(field => {
+                field.classList.add('admin-mode');
+                field.addEventListener('click', function() {
+                    const dayIndex = field.getAttribute('data-day');
+                    const fieldPath = field.getAttribute('data-field');
+                    makeEditable(field, dayIndex, fieldPath);
+                });
+            });
+
+            // Enable trip details editing
+            document.querySelectorAll('.detail-card .editable-field').forEach(field => {
+                if (!field.hasAttribute('data-day')) {
+                    field.classList.add('admin-mode');
+                    field.addEventListener('click', function() {
+                        field.contentEditable = true;
+                        field.classList.add('editing');
+                        field.focus();
+                        
+                        field.addEventListener('blur', function() {
+                            field.contentEditable = false;
+                            field.classList.remove('editing');
+                            savedTripDetails[field.getAttribute('data-field')] = field.textContent.trim();
+                            
+                            // Update costs if needed
+                            if (field.hasAttribute('data-cost')) {
+                                calculateTotalCost();
+                            }
+                        });
+                        
+                        field.addEventListener('keydown', function(e) {
+                            if (e.key === 'Enter') {
+                                field.blur();
+                            }
+                        });
+                    });
+                }
+            });
+        }
+
+        function exportPDF() {
+            // Expand all sections for printing
+            const dayContents = document.querySelectorAll('.day-content');
+            dayContents.forEach(content => {
+                content.classList.add('active');
+            });
+            
+            setTimeout(() => {
+                window.print();
+            }, 100);
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            
+            // Open first day by default
+            setTimeout(() => {
+                toggleDay(0);
+            }, 100);
+        });
+    </script>
+</body>
+</html>
