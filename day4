@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scenic Gravel Cycling Route: San Gimignano to Siena</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+    }
+    h2 {
+      color: #333;
+    }
+    #map {
+      height: 400px;
+      margin-top: 1rem;
+    }
+    .place, .restaurant {
+      margin-bottom: 1.5rem;
+    }
+    .restaurant a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gravel Cycling Adventure: San Gimignano to Siena</h1>
+  </header>
+  <div class="container">
+    <section class="place">
+      <h2>Start: Donna Nobile Affittacamere</h2>
+      <p>📍 Via delle Romite, 15, 53037 San Gimignano, Italy</p>
+      <p>🌐 <a href="http://www.donnanobile.it/" target="_blank">donnanobile.it</a></p>
+    </section>
+
+    <section class="place">
+      <h2>End: The Siena Roofs</h2>
+      <p>📍 Via del Paradiso, 21, 53100 Siena, Italy</p>
+      <p>🌐 <a href="http://www.tettidisiena.com/" target="_blank">tettidisiena.com</a></p>
+    </section>
+
+    <section>
+      <h2>🚴 Turn-by-Turn Directions</h2>
+      <ol>
+        <li>Start at Donna Nobile and head southeast on Via delle Romite.</li>
+        <li>Exit San Gimignano via SP1 and follow signs toward Castel San Gimignano.</li>
+        <li>Take gravel paths through the countryside toward Colle di Val d’Elsa.</li>
+        <li>Cross the Elsa River and continue on SP541 toward Monteriggioni.</li>
+        <li>Ride through Monteriggioni’s medieval gate and follow Via Cassia Nord.</li>
+        <li>Enter Siena via Porta Camollia and navigate to Via del Paradiso.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>🍽️ Recommended Lunch & Dinner Spots</h2>
+
+      <div class="restaurant">
+        <h3>Lunch: Officina della Bistecca</h3>
+        <p>📍 Via XX Luglio, 11, 50022 Panzano in Chianti FI, Italy</p>
+        <p>⭐ Rating: 4.6</p>
+        <p>🌐 <a href="https://www.dariocecchini.com/" target="_blank">dariocecchini.com</a></p>
+        <p>📌 GPS: 43.5286, 11.3162</p>
+      </div>
+
+      <div class="restaurant">
+        <h3>Dinner: Osteria Le Logge</h3>
+        <p>📍 Via del Porrione, 33, 53100 Siena SI, Italy</p>
+        <p>⭐ Rating: 4.5</p>
+        <p>🌐 <a href="https://www.osterialelogge.it/" target="_blank">osterialelogge.it</a></p>
+        <p>📌 GPS: 43.3189, 11.3310</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>🗺️ Route Map</h2>
+      <div id="map"></div>
+    </section>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([43.4086, 11.3045], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const start = L.marker([43.4675, 11.0422]).addTo(map)
+      .bindPopup('Start: Donna Nobile Affittacamere').openPopup();
+
+    const end = L.marker([43.3189, 11.3310]).addTo(map)
+      .bindPopup('End: The Siena Roofs');
+
+    const route = L.polyline([
+      [43.4675, 11.0422],
+      [43.4222, 11.1234],
+      [43.3890, 11.2100],
+      [43.3500, 11.2700],
+      [43.3189, 11.3310]
+    ], { color: 'blue' }).addTo(map);
+  </script>
+</body>
+</html>
 
