@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gravel Cycling Route: Volterra to Quercianella</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 1rem 2rem;
+    }
+    h2 {
+      color: #333;
+    }
+    .map {
+      height: 500px;
+      margin: 2rem 0;
+    }
+    .restaurant {
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Scenic Gravel Cycling Route</h1>
+    <p>From Villa Nencini, Volterra to Villa Tara, Quercianella</p>
+  </header>
+
+  <div class="container">
+    <h2>Turn-by-Turn Directions</h2>
+    <ol>
+      <li>Start at Villa Nencini, Borgo Santo Stefano 55, Volterra</li>
+      <li>Head southeast on SP15 toward Saline di Volterra</li>
+      <li>Turn left onto SP68 and follow signs to Cecina</li>
+      <li>Merge onto SP39 toward Rosignano Marittimo</li>
+      <li>Continue south on Via del Littorale to Quercianella</li>
+      <li>Arrive at Villa Tara, Via don Italo Gambini 11</li>
+    </ol>
+
+    <h2>Recommended Lunch & Dinner Spots</h2>
+
+    <h3>Near Villa Nencini, Volterra</h3>
+    <div class="restaurant">
+      <strong>La Taverna di Villa Nencini</strong><br/>
+      📍 Borgo Santo Stefano, 55, 56048 Volterra, Italy<br/>
+      ⭐ Rating: 5.0<br/>
+      ⏰ Closes 9 PM<br/>
+    </div>
+    <div class="restaurant">
+      <strong>Life Bistrot</strong><br/>
+      📍 Via Porta all'Arco, 11-19, 56048 Volterra, Italy<br/>
+      ⭐ Rating: 4.7<br/>
+      🌐 <a href="http://www.lifebistrot.com/" target="_blank">lifebistrot.com</a>
+    </div>
+    <div class="restaurant">
+      <strong>Osteria Fornelli</strong><br/>
+      📍 Piazzetta dei Fornelli, 3, 56048 Volterra, Italy<br/>
+      ⭐ Rating: 4.5<br/>
+      🌐 <a href="http://www.nuovaosteriafornelli.it/" target="_blank">nuovaosteriafornelli.it</a>
+    </div>
+
+    <h3>Near Villa Tara, Quercianella</h3>
+    <div class="restaurant">
+      <strong><a href="http://www.locandagarzelli.it/" target="_blank">Locanda Garzelli</a></strong><br/>
+      📍 Via Giovanni Pascoli, 32, 57128 Quercianella LI, Italy<br/>
+      ⭐ Rating: 4.4
+    </div>
+    <div class="restaurant">
+      <strong><a href="https://www.ilcalesse.it/" target="_blank">Trattoria Il Calesse</a></strong><br/>
+      📍 Via del Littorale, 445, 57128 Quercianella LI, Italy<br/>
+      ⭐ Rating: 4.5
+    </div>
+    <div class="restaurant">
+      <strong><a href="http://www.lentisco.eu/" target="_blank">Lentisco</a></strong><br/>
+      📍 Viale Cristoforo Colombo, 19, 57128 Quercianella LI, Italy<br/>
+      ⭐ Rating: 4.0
+    </div>
+    <div class="restaurant">
+      <strong><a href="http://www.rogiolobeachclub.it/" target="_blank">Ristorante Baia del Rogiolo</a></strong><br/>
+      📍 Via Cristoforo Colombo, 26, 57128 Quercianella LI, Italy<br/>
+      ⭐ Rating: 4.2
+    </div>
+    <div class="restaurant">
+      <strong><a href="http://www.hotelvillamargherita.com/" target="_blank">Hotel Ristorante Villa Margherita</a></strong><br/>
+      📍 Via Mario Puccini, 44, 57128 Quercianella LI, Italy<br/>
+      ⭐ Rating: 4.3
+    </div>
+    <div class="restaurant">
+      <strong>Ireale Osteria Pizzeria</strong><br/>
+      📍 Via del Littorale, 439, 57128 Livorno LI, Italy<br/>
+      ⭐ Rating: 4.3
+    </div>
+    <div class="restaurant">
+      <strong>Cotto e servito</strong><br/>
+      📍 Via Mario Puccini, 85, 57128 Quercianella LI, Italy<br/>
+      ⭐ Rating: 4.3
+    </div>
+    <div class="restaurant">
+      <strong><a href="http://www.hotelfiammetta.it/" target="_blank">Hotel Ristorante Fiammetta</a></strong><br/>
+      📍 Via Pietro Nardini, 1, 57128 Quercianella LI, Italy<br/>
+      ⭐ Rating: 4.1
+    </div>
+
+    <h2>Interactive Map</h2>
+    <div id="map" class="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([43.4, 10.5], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const start = L.marker([43.4011, 10.8616]).addTo(map)
+      .bindPopup('Villa Nencini, Volterra').openPopup();
+
+    const end = L.marker([43.4622, 10.3571]).addTo(map)
+      .bindPopup('Villa Tara, Quercianella');
+
+    const route = L.polyline([
+      [43.4011, 10.8616],
+      [43.3900, 10.7000],
+      [43.4200, 10.5000],
+      [43.4622, 10.3571]
+    ], {color: 'blue'}).addTo(map);
+
+    map.fitBounds(route.getBounds());
+  </script>
+</body>
+</html>
 
