@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🍝 Lunch Spots in Pisa & Lucca</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    h1 { color: #2c3e50; }
+    h2 { color: #34495e; margin-top: 40px; }
+    .restaurant { background: #fff; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .coords, .rating, .address, .website { font-size: 0.9em; color: #555; }
+    iframe { width: 100%; height: 400px; border: none; margin-top: 30px; }
+    a { color: #2980b9; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <h1>🍽️ Popular Lunch Places in Pisa & Lucca</h1>
+
+  <h2>📍 Pisa</h2>
+
+  <div class="restaurant">
+    <strong>Vero Bistro</strong><br>
+    🍝 Try: Spaghetti alle vongole, tuna in breadcrumbs<br>
+    ⭐ Rating: 4.5/5<br>
+    📍 Address: Viale Antonio Gramsci, 5, 56125 Pisa, Italy<br>
+    🌐 <a href="https://www.verobistro.it" target="_blank">verobistro.it</a><br>
+    📌 GPS: 43.7106, 10.4012
+  </div>
+
+  <div class="restaurant">
+    <strong>ArtBurger</strong><br>
+    🍔 Try: Smash burgers, pear & blue burger<br>
+    ⭐ Rating: 4.3/5<br>
+    📍 Address: Piazzetta Keith Haring, 4, 56125 Pisa, Italy<br>
+    🌐 <a href="https://artburger.it" target="_blank">artburger.it</a><br>
+    📌 GPS: 43.7115, 10.4019
+  </div>
+
+  <div class="restaurant">
+    <strong>Ristorante La Buca</strong><br>
+    🍷 Try: Seafood pasta, risottos, blueberry sorbet<br>
+    ⭐ Rating: 4.6/5<br>
+    📍 Address: Via Massimo d'Azeglio, 6, 56100 Pisa, Italy<br>
+    🌐 <a href="http://www.labucapisa.it" target="_blank">labucapisa.it</a><br>
+    📌 GPS: 43.7152, 10.4010
+  </div>
+
+  <div class="restaurant">
+    <strong>I Porci Comodi</strong><br>
+    🥪 Try: Charcuterie boards, panini<br>
+    ⭐ Rating: 4.8/5<br>
+    📍 Address: Piazza Torricelli 6, 56126 Pisa, Italy<br>
+    🌐 <a href="https://www.iporcicomodi.it" target="_blank">iporcicomodi.it</a><br>
+    📌 GPS: 43.7155, 10.4015
+  </div>
+
+  <div class="restaurant">
+    <strong>Leonardo Café & Ristoro</strong><br>
+    🥞 Try: Pancakes, brunch dishes, pesto pasta<br>
+    ⭐ Rating: 4.2/5<br>
+    📍 Address: Piazza Vittorio Emanuele II, 19, 56125 Pisa, Italy<br>
+    🌐 <a href="https://linktr.ee/leonardo.cafe" target="_blank">linktr.ee/leonardo.cafe</a><br>
+    📌 GPS: 43.7138, 10.4002
+  </div>
+
+  <div class="restaurant">
+    <strong>Ristoro Pecorino</strong><br>
+    🧀 Try: Pappardelle with wild boar, ribollita<br>
+    ⭐ Rating: 4.4/5<br>
+    📍 Address: Via Santa Maria, 157, 56126 Pisa, Italy<br>
+    🌐 <a href="https://www.ristoropecorino.com" target="_blank">ristoropecorino.com</a><br>
+    📌 GPS: 43.7161, 10.4023
+  </div>
+
+  <div class="restaurant">
+    <strong>Trattoria Da Stelio</strong><br>
+    🍝 Try: Tagliatelle, cacciucco, tiramisu<br>
+    ⭐ Rating: 4.6/5<br>
+    📍 Address: Piazza Dante Alighieri, 11, 56126 Pisa, Italy<br>
+    🌐 <a href="https://www.facebook.com/da.stelio/" target="_blank">Facebook page</a><br>
+    📌 GPS: 43.7099, 10.3987
+  </div>
+
+  <div class="restaurant">
+    <strong>L'Ostellino</strong><br>
+    🥖 Try: Panini, cold cuts, cheese boards<br>
+    ⭐ Rating: 4.7/5<br>
+    📍 Address: Piazza Felice Cavallotti, 1, 56126 Pisa, Italy<br>
+    🌐 <a href="https://www.facebook.com/pages/LOstellino/399680077174892" target="_blank">Facebook page</a><br>
+    📌 GPS: 43.7168, 10.4018
+  </div>
+
+  <h2>📍 Lucca</h2>
+
+  <div class="restaurant">
+    <strong>Trattoria Gosto e Mea</strong><br>
+    🍝 Try: Porcini risotto, seafood fritto misto<br>
+    ⭐ Rating: 4.6/5<br>
+    📍 Address: Via Borgo Giannotti, 19, 55100 Lucca, Italy<br>
+    📌 GPS: 43.8443, 10.5045
+  </div>
+
+<div class="restaurant">
+  <strong>Sottosotto</strong><br>
+  🍷 Try: Testaroli, pork neck, sea bass ravioli<br>
+  ⭐ Rating: 4.6/5<br>
+  📍 Address: Piazza dell'Anfiteatro, 3, 55100 Lucca, Italy<br>
+  🌐 <a href="https://sottosottoristorantino.eatbu.com/" target="_blank">sottosottoristorantino.eatbu.com</a><br>
+  📌 GPS: 43.8428, 10.5041
+</div>
+
+<div class="restaurant">
+  <strong>L'Angolo Tondo</strong><br>
+  🍕 Try: Tagliata di manzo, octopus bao, burrata panzanella<br>
+  ⭐ Rating: 4.5/5<br>
+  📍 Address: Piazza dell'Anfiteatro, 7, 55100 Lucca, Italy<br>
+  🌐 <a href="http://www.langolotondo.com/" target="_blank">langolotondo.com</a><br>
+  📌 GPS: 43.8429, 10.5043
+</div>
+
+<div class="restaurant">
+  <strong>La Bottega di Anna e Leo</strong><br>
+  🥩 Try: Stordellati, rovelline, almond cookies<br>
+  ⭐ Rating: 4.7/5<br>
+  📍 Address: Via San Giorgio, 36, 55100 Lucca, Italy<br>
+  🌐 <a href="http://www.labottegadiannaeleo.com/" target="_blank">labottegadiannaeleo.com</a><br>
+  📌 GPS: 43.8436, 10.5039
+</div>
+
+<div class="restaurant">
+  <strong>Osteria al Borgo</strong><br>
+  🍝 Try: Tortelli lucchese, Fiorentina steak, truffle ravioli<br>
+  ⭐ Rating: 4.4/5<br>
+  📍 Address: Via Borgo Giannotti, 507, 55100 Lucca, Italy<br>
+  🌐 <a href="https://www.instagram.com/osteriaalborgolucca/" target="_blank">Instagram page</a><br>
+  📌 GPS: 43.8439, 10.5027
+</div>
+
+<div class="restaurant">
+  <strong>In Pasta – Cibo e Convivio</strong><br>
+  🥬 Try: Rigatoni with almonds, chickpea ravioli, beet hummus bruschetta<br>
+  ⭐ Rating: 4.6/5<br>
+  📍 Address: Via Fillungo, 170, 55100 Lucca, Italy<br>
+  🌐 <a href="http://www.in-pasta.it/" target="_blank">in-pasta.it</a><br>
+  📌 GPS: 43.8441, 10.5040
+</div>
+
+<div class="restaurant">
+  <strong>Osteria Parlascio</strong><br>
+  🧄 Try: Truffle carbonara, sesame tuna, burrata<br>
+  ⭐ Rating: 4.5/5<br>
+  📍 Address: Piazza dell'Anfiteatro, 4, 55100 Lucca, Italy<br>
+  🌐 <a href="https://m.facebook.com/osteriaparlascio/" target="_blank">Facebook page</a><br>
+  📌 GPS: 43.8427, 10.5042
+</div>
+
+<div class="restaurant">
+  <strong>Osteria da Pasquale</strong><br>
+  🍷 Try: Pumpkin velouté, fig pastry, risotto with shrimp<br>
+  ⭐ Rating: 4.8/5<br>
+  📍 Address: Via del Moro, 8, 55100 Lucca, Italy<br>
+  🌐 <a href="http://dapasquale-lucca.com/" target="_blank">dapasquale-lucca.com</a><br>
+  📌 GPS: 43.8432, 10.5044
+</div>
+
+
+  <h2>🗺️ Map of All Locations</h2>
+  <p>Create a custom map in <a href="https://www.google.com/mymaps" target="_blank">Google My Maps</a>, make it public, and paste the embed link below:</p>
+
+  <iframe src="https://www.google.com/maps/d/embed?mid=YOUR_CUSTOM_MAP_ID"></iframe>
+
+</body>
+</html>
