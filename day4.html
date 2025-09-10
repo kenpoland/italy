@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scenic Gravel Cycling Route: San Gimignano to Siena</title>
+  <title>Gravel Cycling Route: San Gimignano to Siena</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     body {
@@ -29,100 +29,122 @@
       color: #333;
     }
     #map {
-      height: 400px;
-      margin-top: 1rem;
+      height: 500px;
+      margin-top: 2rem;
     }
-    .place, .restaurant {
+    .location {
       margin-bottom: 1.5rem;
     }
-    .restaurant a {
-      color: #0066cc;
-      text-decoration: none;
+    .location h3 {
+      margin-bottom: 0.5rem;
     }
-    @media (max-width: 600px) {
-      .container {
-        padding: 1rem;
-      }
+    .location p {
+      margin: 0.2rem 0;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #eee;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Gravel Cycling Adventure: San Gimignano to Siena</h1>
+    <h1>Scenic Gravel Cycling Route: San Gimignano → Siena</h1>
   </header>
+
   <div class="container">
-    <section class="place">
-      <h2>Start: Donna Nobile Affittacamere</h2>
-      <p>📍 Via delle Romite, 15, 53037 San Gimignano, Italy</p>
-      <p>🌐 <a href="http://www.donnanobile.it/" target="_blank">donnanobile.it</a></p>
-    </section>
+    <h2>Route Overview</h2>
+    <p>Start your journey at <strong>Donna Nobile Affittacamere</strong>, nestled in the medieval heart of San Gimignano. Follow the ancient Via Francigena through rolling Tuscan hills, vineyards, and olive groves to reach <strong>B&B I Tetti di Siena</strong>, a charming rooftop retreat in Siena.</p>
 
-    <section class="place">
-      <h2>End: The Siena Roofs</h2>
-      <p>📍 Via del Paradiso, 21, 53100 Siena, Italy</p>
-      <p>🌐 <a href="http://www.tettidisiena.com/" target="_blank">tettidisiena.com</a></p>
-    </section>
+    <h2>Turn-by-Turn Directions</h2>
+    <ul>
+      <li>🚴 Start at Donna Nobile, Via delle Romite 15, San Gimignano</li>
+      <li>Head southeast on Via Francigena gravel trail</li>
+      <li>Pass through Castel San Gimignano and enjoy panoramic views</li>
+      <li>Stop for lunch in Colle di Val d’Elsa</li>
+      <li>Continue south through Monteriggioni’s medieval gates</li>
+      <li>Final stretch into Siena via Strada di Pescaia</li>
+      <li>🏁 Arrive at B&B I Tetti di Siena, Via del Paradiso 21</li>
+    </ul>
 
-    <section>
-      <h2>🚴 Turn-by-Turn Directions</h2>
-      <ol>
-        <li>Start at Donna Nobile and head southeast on Via delle Romite.</li>
-        <li>Exit San Gimignano via SP1 and follow signs toward Castel San Gimignano.</li>
-        <li>Take gravel paths through the countryside toward Colle di Val d’Elsa.</li>
-        <li>Cross the Elsa River and continue on SP541 toward Monteriggioni.</li>
-        <li>Ride through Monteriggioni’s medieval gate and follow Via Cassia Nord.</li>
-        <li>Enter Siena via Porta Camollia and navigate to Via del Paradiso.</li>
-      </ol>
-    </section>
+    <h2>Lunch Stop Recommendation</h2>
+    <div class="location">
+      <h3>Arnolfo Ristorante ⭐️⭐️⭐️⭐️ (Michelin Star)</h3>
+      <p>📍 Via XX Settembre, 50, 53034 Colle di Val d'Elsa SI, Italy</p>
+      <p>🌐 <a href="https://www.arnolfo.com" target="_blank">arnolfo.com</a></p>
+      <p>📞 +39 0577 920549</p>
+      <p>🧭 GPS: 43.4225, 11.1331</p>
+    </div>
 
-    <section>
-      <h2>🍽️ Recommended Lunch & Dinner Spots</h2>
+    <h2>Dinner Spot in Siena</h2>
+    <div class="location">
+      <h3>La Taverna di San Giuseppe ⭐️⭐️⭐️⭐️⭐️</h3>
+      <p>📍 Via Giovanni Dupre, 132, 53100 Siena SI, Italy</p>
+      <p>🌐 <a href="https://www.tavernasangiuseppe.it" target="_blank">tavernasangiuseppe.it</a></p>
+      <p>📞 +39 0577 42286</p>
+      <p>🧭 GPS: 43.3186, 11.3319</p>
+    </div>
 
-      <div class="restaurant">
-        <h3>Lunch: Officina della Bistecca</h3>
-        <p>📍 Via XX Luglio, 11, 50022 Panzano in Chianti FI, Italy</p>
-        <p>⭐ Rating: 4.6</p>
-        <p>🌐 <a href="https://www.dariocecchini.com/" target="_blank">dariocecchini.com</a></p>
-        <p>📌 GPS: 43.5286, 11.3162</p>
-      </div>
+    <h2>Sights Along the Way</h2>
+    <ul>
+      <li>🏰 Monteriggioni – Walled medieval village</li>
+      <li>🌄 Val d’Elsa River Park – Scenic gravel paths</li>
+      <li>🖼️ San Gimignano Towers – UNESCO World Heritage Site</li>
+      <li>🕍 Siena Cathedral – Gothic masterpiece</li>
+    </ul>
 
-      <div class="restaurant">
-        <h3>Dinner: Osteria Le Logge</h3>
-        <p>📍 Via del Porrione, 33, 53100 Siena SI, Italy</p>
-        <p>⭐ Rating: 4.5</p>
-        <p>🌐 <a href="https://www.osterialelogge.it/" target="_blank">osterialelogge.it</a></p>
-        <p>📌 GPS: 43.3189, 11.3310</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>🗺️ Route Map</h2>
-      <div id="map"></div>
-    </section>
+    <h2>Interactive Map</h2>
+    <div id="map"></div>
   </div>
+
+  <footer>
+    &copy; 2025 Gravel Tuscany Adventures
+  </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([43.4086, 11.3045], 10);
+    const map = L.map('map').setView([43.4186, 11.2231], 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    const start = L.marker([43.4675, 11.0422]).addTo(map)
-      .bindPopup('Start: Donna Nobile Affittacamere').openPopup();
+    const points = [
+      {
+        name: "Donna Nobile Affittacamere",
+        coords: [43.4671, 11.0426],
+        popup: "<strong>Start:</strong> Donna Nobile Affittacamere"
+      },
+      {
+        name: "Arnolfo Ristorante",
+        coords: [43.4225, 11.1331],
+        popup: "<strong>Lunch Stop:</strong> Arnolfo Ristorante"
+      },
+      {
+        name: "La Taverna di San Giuseppe",
+        coords: [43.3186, 11.3319],
+        popup: "<strong>Dinner:</strong> La Taverna di San Giuseppe"
+      },
+      {
+        name: "B&B I Tetti di Siena",
+        coords: [43.3189, 11.3305],
+        popup: "<strong>End:</strong> B&B I Tetti di Siena"
+      }
+    ];
 
-    const end = L.marker([43.3189, 11.3310]).addTo(map)
-      .bindPopup('End: The Siena Roofs');
+    points.forEach(point => {
+      L.marker(point.coords).addTo(map).bindPopup(point.popup);
+    });
 
-    const route = L.polyline([
-      [43.4675, 11.0422],
-      [43.4222, 11.1234],
-      [43.3890, 11.2100],
-      [43.3500, 11.2700],
-      [43.3189, 11.3310]
-    ], { color: 'blue' }).addTo(map);
+    const route = [
+      [43.4671, 11.0426],
+      [43.4225, 11.1331],
+      [43.3189, 11.3305]
+    ];
+
+    L.polyline(route, { color: 'blue' }).addTo(map);
   </script>
 </body>
 </html>
-
