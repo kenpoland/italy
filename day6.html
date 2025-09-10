@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gravel Cycling Route: Volterra to Quercianella</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scenic Gravel Cycling Route: Volterra to Quercianella</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,137 +20,119 @@
       text-align: center;
     }
     .container {
-      padding: 1rem 2rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
     }
     h2 {
       color: #333;
+      margin-top: 2rem;
     }
-    .map {
+    #map {
       height: 500px;
-      margin: 2rem 0;
+      margin-top: 1rem;
     }
-    .restaurant {
-      background: #fff;
-      padding: 1rem;
+    .location {
       margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
-    @media (max-width: 600px) {
-      .container {
-        padding: 1rem;
-      }
+    .location strong {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .sight, .restaurant {
+      margin-bottom: 1.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #333;
+      color: #fff;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Scenic Gravel Cycling Route</h1>
-    <p>From Villa Nencini, Volterra to Villa Tara, Quercianella</p>
+    <h1>Scenic Gravel Cycling Route: Volterra to Quercianella</h1>
   </header>
-
   <div class="container">
+    <h2>Route Overview</h2>
+    <p>Start your journey at <strong>Villa Nencini</strong>, Borgo Santo Stefano 55, 56048 Volterra, Italy, and cycle through the rolling Tuscan hills to <strong>B&B Villa Tara</strong>, Via don Italo Gambini 11, 57128 Quercianella, Italy. This scenic gravel route covers approximately 85 km and offers breathtaking views, cultural landmarks, and delicious local cuisine.</p>
+
     <h2>Turn-by-Turn Directions</h2>
-    <ol>
-      <li>Start at Villa Nencini, Borgo Santo Stefano 55, Volterra</li>
-      <li>Head southeast on SP15 toward Saline di Volterra</li>
-      <li>Turn left onto SP68 and follow signs to Cecina</li>
-      <li>Merge onto SP39 toward Rosignano Marittimo</li>
-      <li>Continue south on Via del Littorale to Quercianella</li>
-      <li>Arrive at Villa Tara, Via don Italo Gambini 11</li>
-    </ol>
+    <ul>
+      <li>Depart Villa Nencini heading southeast on SP15.</li>
+      <li>Pass through Roncolla and Ulignano, enjoying views of olive groves and vineyards.</li>
+      <li>Continue toward San Gimignano for a mid-route break.</li>
+      <li>Take SP68 toward Cecina, then follow coastal roads south to Quercianella.</li>
+      <li>Arrive at B&B Villa Tara.</li>
+    </ul>
 
-    <h2>Recommended Lunch & Dinner Spots</h2>
-
-    <h3>Near Villa Nencini, Volterra</h3>
+    <h2>Midway Lunch Stop</h2>
     <div class="restaurant">
-      <strong>La Taverna di Villa Nencini</strong><br/>
-      📍 Borgo Santo Stefano, 55, 56048 Volterra, Italy<br/>
-      ⭐ Rating: 5.0<br/>
-      ⏰ Closes 9 PM<br/>
-    </div>
-    <div class="restaurant">
-      <strong>Life Bistrot</strong><br/>
-      📍 Via Porta all'Arco, 11-19, 56048 Volterra, Italy<br/>
-      ⭐ Rating: 4.7<br/>
-      🌐 <a href="http://www.lifebistrot.com/" target="_blank">lifebistrot.com</a>
-    </div>
-    <div class="restaurant">
-      <strong>Osteria Fornelli</strong><br/>
-      📍 Piazzetta dei Fornelli, 3, 56048 Volterra, Italy<br/>
-      ⭐ Rating: 4.5<br/>
-      🌐 <a href="http://www.nuovaosteriafornelli.it/" target="_blank">nuovaosteriafornelli.it</a>
+      <strong>Villa Maris Stella</strong><br />
+      Address: Via Mario Puccini, 72, 57128 Quercianella LI, Italy<br />
+      Rating: 4.7 ⭐ (10 reviews)<br />
+      Website: <a href="https://www.sangiuseppecasaperferie.it/casa-autogestione-maris-stella/" target="_blank">Visit site</a><br />
+      GPS: 43.4625, 10.3402
     </div>
 
-    <h3>Near Villa Tara, Quercianella</h3>
+    <h2>Recommended Dinner Spot</h2>
     <div class="restaurant">
-      <strong><a href="http://www.locandagarzelli.it/" target="_blank">Locanda Garzelli</a></strong><br/>
-      📍 Via Giovanni Pascoli, 32, 57128 Quercianella LI, Italy<br/>
-      ⭐ Rating: 4.4
+      <strong>VILLA ANSELMI</strong><br />
+      Address: Viale Italia, 423/Primo Piano, 57128 Livorno LI, Italy<br />
+      Rating: 4.8 ⭐ (6 reviews)<br />
+      Website: <a href="https://www.villaanselmi-arteindiretta.it/index.htm" target="_blank">Visit site</a><br />
+      GPS: 43.5071, 10.3315
     </div>
-    <div class="restaurant">
-      <strong><a href="https://www.ilcalesse.it/" target="_blank">Trattoria Il Calesse</a></strong><br/>
-      📍 Via del Littorale, 445, 57128 Quercianella LI, Italy<br/>
-      ⭐ Rating: 4.5
-    </div>
-    <div class="restaurant">
-      <strong><a href="http://www.lentisco.eu/" target="_blank">Lentisco</a></strong><br/>
-      📍 Viale Cristoforo Colombo, 19, 57128 Quercianella LI, Italy<br/>
-      ⭐ Rating: 4.0
-    </div>
-    <div class="restaurant">
-      <strong><a href="http://www.rogiolobeachclub.it/" target="_blank">Ristorante Baia del Rogiolo</a></strong><br/>
-      📍 Via Cristoforo Colombo, 26, 57128 Quercianella LI, Italy<br/>
-      ⭐ Rating: 4.2
-    </div>
-    <div class="restaurant">
-      <strong><a href="http://www.hotelvillamargherita.com/" target="_blank">Hotel Ristorante Villa Margherita</a></strong><br/>
-      📍 Via Mario Puccini, 44, 57128 Quercianella LI, Italy<br/>
-      ⭐ Rating: 4.3
-    </div>
-    <div class="restaurant">
-      <strong>Ireale Osteria Pizzeria</strong><br/>
-      📍 Via del Littorale, 439, 57128 Livorno LI, Italy<br/>
-      ⭐ Rating: 4.3
-    </div>
-    <div class="restaurant">
-      <strong>Cotto e servito</strong><br/>
-      📍 Via Mario Puccini, 85, 57128 Quercianella LI, Italy<br/>
-      ⭐ Rating: 4.3
-    </div>
-    <div class="restaurant">
-      <strong><a href="http://www.hotelfiammetta.it/" target="_blank">Hotel Ristorante Fiammetta</a></strong><br/>
-      📍 Via Pietro Nardini, 1, 57128 Quercianella LI, Italy<br/>
-      ⭐ Rating: 4.1
+
+    <h2>Sights to See</h2>
+    <div class="sight">
+      <strong>Piazza del Campo</strong><br />
+      Address: Il Campo, 53100 Siena SI, Italy<br />
+      Description: A medieval bricked square famous for the Palio horse race and surrounded by elegant buildings.<br />
+      Website: <a href="https://visitsienaofficial.it/87-piazza-del-campo/" target="_blank">Visit Siena</a><br />
+      GPS: 43.3186, 11.3306
     </div>
 
     <h2>Interactive Map</h2>
-    <div id="map" class="map"></div>
+    <div id="map"></div>
   </div>
+
+  <footer>
+    &copy; 2025 Scenic Tuscany Cycling. All rights reserved.
+  </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([43.4, 10.5], 10);
+    const map = L.map('map').setView([43.4, 10.6], 9);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    const start = L.marker([43.4011, 10.8616]).addTo(map)
-      .bindPopup('Villa Nencini, Volterra').openPopup();
+    const locations = [
+      { name: "Villa Nencini", coords: [43.4011, 10.8602] },
+      { name: "Villa Maris Stella", coords: [43.4625, 10.3402] },
+      { name: "Piazza del Campo", coords: [43.3186, 11.3306] },
+      { name: "VILLA ANSELMI", coords: [43.5071, 10.3315] },
+      { name: "B&B Villa Tara", coords: [43.4702, 10.3400] }
+    ];
 
-    const end = L.marker([43.4622, 10.3571]).addTo(map)
-      .bindPopup('Villa Tara, Quercianella');
+    locations.forEach(loc => {
+      L.marker(loc.coords).addTo(map).bindPopup(`<strong>${loc.name}</strong>`).openPopup();
+    });
 
-    const route = L.polyline([
-      [43.4011, 10.8616],
-      [43.3900, 10.7000],
-      [43.4200, 10.5000],
-      [43.4622, 10.3571]
-    ], {color: 'blue'}).addTo(map);
+    const route = [
+      [43.4011, 10.8602],
+      [43.3186, 11.3306],
+      [43.4625, 10.3402],
+      [43.5071, 10.3315],
+      [43.4702, 10.3400]
+    ];
 
-    map.fitBounds(route.getBounds());
+    L.polyline(route, { color: 'blue' }).addTo(map);
   </script>
 </body>
 </html>
-
