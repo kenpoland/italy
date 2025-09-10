@@ -92,6 +92,32 @@
             transform: translateY(-2px);
         }
 
+        /* Add this new block to style your container and buttons */
+.day-links-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.day-btn {
+    background: #27ae60; /* Same as your export button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.day-btn:hover {
+    background: #229954; /* Same as your export button hover */
+    transform: translateY(-2px);
+}
+
         .export-btn {
             background: #27ae60;
         }
