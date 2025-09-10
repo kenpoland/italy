@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scenic Gravel Cycling Route: Siena to Volterra</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 1rem 2rem;
+    }
+    h2 {
+      color: #333;
+      margin-top: 2rem;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    .map {
+      height: 500px;
+      margin: 2rem 0;
+    }
+    .restaurant {
+      background: #fff;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gravel Cycling Adventure: Siena to Volterra</h1>
+    <p>From B&B I Tetti di Siena to Villa Nencini</p>
+  </header>
+
+  <div class="container">
+    <h2>Turn-by-Turn Directions</h2>
+    <ul>
+      <li>Start at B&B I Tetti di Siena, Via del Paradiso, 21, Siena</li>
+      <li>Head south on Via del Paradiso toward Via di Città</li>
+      <li>Take SP73 and follow signs toward Colle di Val d’Elsa</li>
+      <li>Merge onto SP541 and continue through the rolling hills</li>
+      <li>Turn onto SP15 toward Castel San Gimignano</li>
+      <li>Continue on SP15 until you reach Volterra</li>
+      <li>Arrive at Villa Nencini, Borgo Santo Stefano 55, Volterra</li>
+    </ul>
+
+    <h2>Recommended Lunch & Dinner Spots</h2>
+
+    <div class="restaurant">
+      <h3>La Taverna di Villa Nencini</h3>
+      <p>📍 Borgo Santo Stefano, 55, 56048 Volterra PI, Italy</p>
+      <p>⭐ Rating: 5.0 (11 reviews)</p>
+    </div>
+
+    <div class="restaurant">
+      <h3><a href="http://www.lifebistrot.com/" target="_blank">Life Bistrot - Plant Based Restaurant in Tuscany</a></h3>
+      <p>📍 Via Porta all'Arco, 11-19, 56048 Volterra PI, Italy</p>
+      <p>⭐ Rating: 4.7 (542 reviews)</p>
+    </div>
+
+    <div class="restaurant">
+      <h3><a href="http://www.nuovaosteriafornelli.it/" target="_blank">Osteria Fornelli</a></h3>
+      <p>📍 Piazzetta dei Fornelli, 3, 56048 Volterra PI, Italy</p>
+      <p>⭐ Rating: 4.5 (1199 reviews)</p>
+    </div>
+
+    <div class="restaurant">
+      <h3><a href="https://www.lasostadelpriore.com/" target="_blank">La Sosta del Priore</a></h3>
+      <p>📍 Vicolo delle Prigioni, 1/2, 56048 Volterra PI, Italy</p>
+      <p>⭐ Rating: 4.8 (1180 reviews)</p>
+    </div>
+
+    <div class="restaurant">
+      <h3><a href="http://www.vecchialira.com/" target="_blank">La Vecchia Lira</a></h3>
+      <p>📍 Via Giacomo Matteotti, 19, 56048 Volterra PI, Italy</p>
+      <p>⭐ Rating: 4.6 (1686 reviews)</p>
+    </div>
+
+    <div class="restaurant">
+      <h3><a href="https://porgilaltrapancia.shop/" target="_blank">Porgi l'altra Pancia</a></h3>
+      <p>📍 Via Giacomo Matteotti, 37, 56048 Volterra PI, Italy</p>
+      <p>⭐ Rating: 4.5 (1079 reviews)</p>
+    </div>
+
+    <div class="restaurant">
+      <h3><a href="https://it-it.facebook.com/PanineriaAlVicolino/" target="_blank">Al Vicolino</a></h3>
+      <p>📍 Via delle Prigioni, 2, 56048 Volterra PI, Italy</p>
+      <p>⭐ Rating: 4.8 (591 reviews)</p>
+    </div>
+
+    <div class="restaurant">
+      <h3><a href="https://www.hostariasaccofiorentino.it/" target="_blank">Hostaria Il Sacco Fiorentino</a></h3>
+      <p>📍 Via Giusto Turazza, 13, 56048 Volterra PI, Italy</p>
+      <p>⭐ Rating: 4.5 (307 reviews)</p>
+    </div>
+
+    <h2>Interactive Route Map</h2>
+    <div id="map" class="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([43.3188, 11.3308], 10); // Centered near Siena
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const start = L.marker([43.3188, 11.3308]).addTo(map)
+      .bindPopup('B&B I Tetti di Siena').openPopup();
+
+    const end = L.marker([43.4016, 10.8646]).addTo(map)
+      .bindPopup('Villa Nencini, Volterra');
+
+    const route = L.polyline([
+      [43.3188, 11.3308],
+      [43.3556, 11.0450],
+      [43.4016, 10.8646]
+    ], {
+      color: 'blue',
+      weight: 4,
+      opacity: 0.7
+    }).addTo(map);
+
+    map.fitBounds(route.getBounds());
+  </script>
+</body>
+</html>
+
