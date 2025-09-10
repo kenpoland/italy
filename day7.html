@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scenic Gravel Cycling Route: Quercianella to Pisa</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #f4f4f4;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+    }
+    h2 {
+      color: #333;
+      margin-top: 2rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .map {
+      height: 500px;
+      margin-top: 2rem;
+    }
+    .spot {
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gravel Cycling Adventure: Quercianella to Pisa</h1>
+  </header>
+  <div class="container">
+    <h2>Route Overview</h2>
+    <p><strong>Start:</strong> Villa Tara, 11 Via don Italo Gambini, 57128 Quercianella, Italy</p>
+    <p><strong>End:</strong> B&B Residenza d'epoca, Piazza Cairoli 12, 56127 Pisa, Italy</p>
+    <p><strong>Distance:</strong> ~36.7 km</p>
+    <p><strong>Terrain:</strong> Mixed gravel and paved roads with scenic coastal and countryside views</p>
+
+    <h2>Turn-by-Turn Directions</h2>
+    <ul>
+      <li>Start at Villa Tara and head north on Via don Italo Gambini</li>
+      <li>Turn right onto Via del Littorale and follow the coast</li>
+      <li>Merge onto SP9 heading toward Livorno</li>
+      <li>Pass through Ardenza and Montenero</li>
+      <li>Continue on SP224 toward Collesalvetti</li>
+      <li>Turn left onto Via delle Sorgenti toward Pisa</li>
+      <li>Enter Pisa via Via Livornese</li>
+      <li>Arrive at Piazza Cairoli and B&B Residenza d'epoca</li>
+    </ul>
+
+    <h2>Recommended Lunch & Dinner Spots</h2>
+
+    <h3>Near Quercianella</h3>
+    <div class="spot">
+      <strong>Locanda Garzelli</strong><br>
+      Via Giovanni Pascoli, 32, 57128 Quercianella LI, Italy<br>
+      Rating: 4.4 ⭐ | <a href="http://www.locandagarzelli.it/" target="_blank">Website</a><br>
+      GPS: 43.4654, 10.3492
+    </div>
+    <div class="spot">
+      <strong>Trattoria Il Calesse</strong><br>
+      Via del Littorale, 445, 57128 Quercianella LI, Italy<br>
+      Rating: 4.5 ⭐ | <a href="https://www.ilcalesse.it/" target="_blank">Website</a><br>
+      GPS: 43.4659, 10.3487
+    </div>
+
+    <h3>Near Pisa</h3>
+    <div class="spot">
+      <strong><a href="https://www.mediceo.it/" target="_blank">Mediceo - Beersteccheria</a></strong><br>
+      Piazza Cairoli, 13, 56127 Pisa PI, Italy<br>
+      Rating: 4.5 ⭐ | GPS: 43.7173, 10.4012
+    </div>
+    <div class="spot">
+      <strong>Chilometro Toscano</strong><br>
+      Via Camillo Benso Cavour, 9, 56127 Pisa PI, Italy<br>
+      Rating: 4.8 ⭐ | GPS: 43.7171, 10.4015
+    </div>
+    <div class="spot">
+      <strong><a href="https://www.primopastapisa.it/" target="_blank">Primo - Pasta & Street Food Pisa</a></strong><br>
+      Vicolo del Tidi, 24, 56126 Pisa PI, Italy<br>
+      Rating: 4.6 ⭐ | GPS: 43.7160, 10.4010
+    </div>
+    <div class="spot">
+      <strong><a href="https://ilcrudopisa.com/" target="_blank">Il Crudo</a></strong><br>
+      Piazza Cairoli, 8, 56100 Pisa PI, Italy<br>
+      Rating: 4.6 ⭐ | GPS: 43.7172, 10.4013
+    </div>
+    <div class="spot">
+      <strong><a href="http://www.facebook.com/Il-ristoro-della-Pe-1522690104704141" target="_blank">Il Ristoro della Pe'</a></strong><br>
+      Via Giosuè Carducci, 73, 56127 Pisa PI, Italy<br>
+      Rating: 4.7 ⭐ | GPS: 43.7180, 10.4020
+    </div>
+    <div class="spot">
+      <strong>Quanto Basta</strong><br>
+      Via Palestro, 37, 56127 Pisa PI, Italy<br>
+      Rating: 4.6 ⭐ | GPS: 43.7175, 10.4030
+    </div>
+    <div class="spot">
+      <strong><a href="http://www.osteriacavalieri.pisa.it/" target="_blank">Osteria dei Cavalieri</a></strong><br>
+      Via S. Frediano, 16, 56126 Pisa PI, Italy<br>
+      Rating: 4.5 ⭐ | GPS: 43.7155, 10.4005
+    </div>
+    <div class="spot">
+      <strong><a href="https://instagram.com/irtegame?igshid=YmMyMTA2M2Y=" target="_blank">Ir Tegame Spaghetteria</a></strong><br>
+      Piazza Cairoli, 9, 56127 Pisa PI, Italy<br>
+      Rating: 4.1 ⭐ | GPS: 43.7173, 10.4011
+    </div>
+
+    <h2>Interactive Map</h2>
+    <div id="map" class="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([43.6, 10.35], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const start = L.marker([43.4654, 10.3492]).addTo(map).bindPopup("Villa Tara");
+    const end = L.marker([43.7173, 10.4012]).addTo(map).bindPopup("B&B Residenza d'epoca");
+
+    const route = L.polyline([
+      [43.4654, 10.3492],
+      [43.5, 10.35],
+      [43.55, 10.36],
+      [43.6, 10.37],
+      [43.65, 10.38],
+      [43.7173, 10.4012]
+    ], { color: 'blue' }).addTo(map);
+
+    map.fitBounds(route.getBounds());
+  </script>
+</body>
+</html>
+
