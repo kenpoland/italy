@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gravel Cycling: Lucca to Empoli</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; background: #f9f9f9; }
+    header { background: #2c3e50; color: white; padding: 1em; text-align: center; }
+    section { padding: 1.5em 2em; }
+    h2 { color: #2c3e50; }
+    ul, ol { margin-left: 1em; }
+    #map { height: 400px; margin-top: 1em; border: 1px solid #ccc; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1em; }
+    th, td { border: 1px solid #ddd; padding: 0.75em; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gravel Cycling Route: Lucca to Empoli</h1>
+    <p>Easy, scenic ride with Tuscan food stops</p>
+  </header>
+
+  <section>
+    <h2>Route Overview 🚴‍♂️</h2>
+    <ul>
+      <li><strong>Distance:</strong> ~70 km</li>
+      <li><strong>Elevation Gain:</strong> ~250 m</li>
+      <li><strong>Surface:</strong> ~60% gravel, 40% quiet paved roads</li>
+      <li><strong>Estimated Time:</strong> 4–5 hours with lunch break</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Turn-by-Turn Directions 🗺️</h2>
+    <ol>
+      <li>Start at Via Borgo Giannotti 19, Lucca</li>
+      <li>Follow Serchio River Path east (~10 km)</li>
+      <li>Cross Ponte a Moriano, continue on Via di Poggio to Capannori</li>
+      <li>Take Via delle Ville through olive groves</li>
+      <li>Join Via Francigena trail toward Altopascio</li>
+      <li>Follow Via Romana Vecchia to Fucecchio</li>
+      <li><strong>Lunch Stop:</strong> Ristorante La Buca or Osteria del Gambero Rosso</li>
+      <li>Continue via Via di Burello to Cerreto Guidi</li>
+      <li>Ride Via di Monterappoli into Empoli</li>
+      <li>Finish at Piazza Don Minzoni 18</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Recommended Dinner Spots in Empoli 🍽️</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Cuisine</th>
+          <th>Rating</th>
+          <th>Highlights</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Casa della Bistecca</td>
+          <td>Steakhouse, Tuscan</td>
+          <td>⭐️ 4.6</td>
+          <td>Premium Fiorentina steak, elegant setting</td>
+        </tr>
+        <tr>
+          <td>Osteria Ì Canto Ghibellino</td>
+          <td>Tuscan, Pizza</td>
+          <td>⭐️ 4.6</td>
+          <td>Wood-fired pizza, cozy vibe</td>
+        </tr>
+        <tr>
+          <td>Ciborgo</td>
+          <td>Seafood, Italian</td>
+          <td>⭐️ 4.4</td>
+          <td>Creative seafood, modern ambiance</td>
+        </tr>
+        <tr>
+          <td>Gola Bistrot</td>
+          <td>Mediterranean, Italian</td>
+          <td>⭐️ 5.0</td>
+          <td>Artisanal ingredients, stylish bistro</td>
+        </tr>
+        <tr>
+          <td>Molo 73</td>
+          <td>Seafood, Italian</td>
+          <td>⭐️ 5.0</td>
+          <td>Fresh catches, lively atmosphere</td>
+        </tr>
+        <tr>
+          <td>Osteria Donna Riccarda</td>
+          <td>Tuscan, Mediterranean</td>
+          <td>⭐️ 4.2</td>
+          <td>Rustic charm, handmade pasta</td>
+        </tr>
+        <tr>
+          <td>Schiacciavineria</td>
+          <td>Wine bar, Tuscan snack</td>
+          <td>⭐️ 4.6</td>
+          <td>Local wines, schiacciata flatbread</td>
+        </tr>
+        <tr>
+          <td>Cucina Sant’Andrea</td>
+          <td>Seafood, Italian</td>
+          <td>⭐️ 4.1</td>
+          <td>Refined dishes, great tiramisu</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Route Map 🗺️</h2>
+    <div id="map"></div>
+  </section>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([43.7167, 10.9333], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const routePoints = [
+      [43.8509, 10.5086], // Lucca
+      [43.8167, 10.6333], // Capannori
+      [43.8161, 10.6764], // Altopascio
+      [43.7414, 10.7986], // Fucecchio
+      [43.7167, 10.9333]  // Empoli
+    ];
+
+    const routeLine = L.polyline(routePoints, { color: 'green' }).addTo(map);
+    map.fitBounds(routeLine.getBounds());
+  </script>
+</body>
+</html>
