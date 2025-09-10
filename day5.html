@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scenic Gravel Cycling Route: Siena to Volterra</title>
+  <title>Gravel Cycling Route: Siena to Volterra</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     body {
@@ -11,7 +11,7 @@
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background-color: #f4f4f4;
+      background: #f4f4f4;
     }
     header {
       background: #333;
@@ -20,25 +20,27 @@
       text-align: center;
     }
     .container {
-      padding: 1rem 2rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
     }
     h2 {
       color: #333;
       margin-top: 2rem;
     }
-    ul {
-      padding-left: 1.5rem;
+    #map {
+      height: 400px;
+      margin-top: 1rem;
     }
-    .map {
-      height: 500px;
-      margin: 2rem 0;
+    .location {
+      margin-bottom: 1rem;
     }
     .restaurant {
-      background: #fff;
+      background: #f9f9f9;
       padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      border-left: 5px solid #4CAF50;
     }
     @media (max-width: 600px) {
       .container {
@@ -49,102 +51,118 @@
 </head>
 <body>
   <header>
-    <h1>Gravel Cycling Adventure: Siena to Volterra</h1>
-    <p>From B&B I Tetti di Siena to Villa Nencini</p>
+    <h1>Scenic Gravel Cycling Route: Siena to Volterra</h1>
   </header>
-
   <div class="container">
+    <h2>Route Overview</h2>
+    <p><strong>Start:</strong> B&B I Tetti di Siena, Via del Paradiso, 21, 53100 Siena, Italy</p>
+    <p><strong>End:</strong> Villa Nencini, Borgo Santo Stefano 55, 56048 Volterra, Italy</p>
+    <p>This 55 km gravel route winds through the Tuscan countryside, featuring white roads (strade bianche), vineyards, and medieval villages.</p>
+
+    <div id="map"></div>
+
     <h2>Turn-by-Turn Directions</h2>
     <ul>
-      <li>Start at B&B I Tetti di Siena, Via del Paradiso, 21, Siena</li>
-      <li>Head south on Via del Paradiso toward Via di Città</li>
-      <li>Take SP73 and follow signs toward Colle di Val d’Elsa</li>
-      <li>Merge onto SP541 and continue through the rolling hills</li>
-      <li>Turn onto SP15 toward Castel San Gimignano</li>
-      <li>Continue on SP15 until you reach Volterra</li>
-      <li>Arrive at Villa Nencini, Borgo Santo Stefano 55, Volterra</li>
+      <li>Depart from B&B I Tetti di Siena heading southeast on Via del Paradiso</li>
+      <li>Follow SP73 to Colle di Val d’Elsa</li>
+      <li>Turn onto SR68 toward Volterra</li>
+      <li>Pass through Mazzolla and continue to Borgo Santo Stefano</li>
+      <li>Arrive at Villa Nencini</li>
     </ul>
 
-    <h2>Recommended Lunch & Dinner Spots</h2>
-
+    <h2>Midway Lunch Stop</h2>
     <div class="restaurant">
-      <h3>La Taverna di Villa Nencini</h3>
-      <p>📍 Borgo Santo Stefano, 55, 56048 Volterra PI, Italy</p>
-      <p>⭐ Rating: 5.0 (11 reviews)</p>
+      <h3>Locanda Il Boschetto</h3>
+      <p>📍 SR68, km 49-50, 56048 Volterra PI, Italy</p>
+      <p>⭐ 4.5 (753 reviews)</p>
+      <p><a href="http://www.locandailboschetto.com/" target="_blank">Website</a></p>
+      <p>🍝 Traditional Tuscan cuisine with scenic countryside views</p>
     </div>
+
+    <h2>Sights Along the Route</h2>
+    <ul>
+      <li>🏰 Monteriggioni – Walled medieval village with panoramic views</li>
+      <li>🌲 Chianti Sculpture Park – Outdoor art in nature</li>
+      <li>🏛️ Roman Theatre of Volterra – Ancient ruins with mosaics</li>
+      <li>🗿 Porta all'Arco – Etruscan gate dating back to the 4th century BC</li>
+    </ul>
+
+    <h2>Recommended Restaurants in Volterra</h2>
 
     <div class="restaurant">
       <h3><a href="http://www.lifebistrot.com/" target="_blank">Life Bistrot - Plant Based Restaurant in Tuscany</a></h3>
       <p>📍 Via Porta all'Arco, 11-19, 56048 Volterra PI, Italy</p>
-      <p>⭐ Rating: 4.7 (542 reviews)</p>
-    </div>
-
-    <div class="restaurant">
-      <h3><a href="http://www.nuovaosteriafornelli.it/" target="_blank">Osteria Fornelli</a></h3>
-      <p>📍 Piazzetta dei Fornelli, 3, 56048 Volterra PI, Italy</p>
-      <p>⭐ Rating: 4.5 (1199 reviews)</p>
-    </div>
-
-    <div class="restaurant">
-      <h3><a href="https://www.lasostadelpriore.com/" target="_blank">La Sosta del Priore</a></h3>
-      <p>📍 Vicolo delle Prigioni, 1/2, 56048 Volterra PI, Italy</p>
-      <p>⭐ Rating: 4.8 (1180 reviews)</p>
+      <p>⭐ 4.7 (542 reviews)</p>
+      <p>🌱 Vegan and Mediterranean dishes in a cozy setting</p>
     </div>
 
     <div class="restaurant">
       <h3><a href="http://www.vecchialira.com/" target="_blank">La Vecchia Lira</a></h3>
       <p>📍 Via Giacomo Matteotti, 19, 56048 Volterra PI, Italy</p>
-      <p>⭐ Rating: 4.6 (1686 reviews)</p>
+      <p>⭐ 4.6 (1687 reviews)</p>
+      <p>🍷 Classic Tuscan fare with an extensive wine list</p>
     </div>
 
     <div class="restaurant">
-      <h3><a href="https://porgilaltrapancia.shop/" target="_blank">Porgi l'altra Pancia</a></h3>
-      <p>📍 Via Giacomo Matteotti, 37, 56048 Volterra PI, Italy</p>
-      <p>⭐ Rating: 4.5 (1079 reviews)</p>
+      <h3><a href="http://www.nuovaosteriafornelli.it/" target="_blank">Osteria Fornelli</a></h3>
+      <p>📍 Piazzetta dei Fornelli, 3, 56048 Volterra PI, Italy</p>
+      <p>⭐ 4.5 (1199 reviews)</p>
+      <p>🍝 Elegant dishes in a charming piazza setting</p>
     </div>
 
     <div class="restaurant">
-      <h3><a href="https://it-it.facebook.com/PanineriaAlVicolino/" target="_blank">Al Vicolino</a></h3>
-      <p>📍 Via delle Prigioni, 2, 56048 Volterra PI, Italy</p>
-      <p>⭐ Rating: 4.8 (591 reviews)</p>
+      <h3><a href="https://www.osteria-lapace.com/" target="_blank">Osteria La Pace Volterra</a></h3>
+      <p>📍 Via Don Giovanni Minzoni, 55, 56048 Volterra PI, Italy</p>
+      <p>⭐ 4.5 (3323 reviews)</p>
+      <p>🥩 Rustic tavern with hearty Tuscan mains</p>
+    </div>
+
+    <div class="restaurant">
+      <h3>Ristorante Enoteca Del Duca</h3>
+      <p>📍 Via di Castello, 2, 56048 Volterra PI, Italy</p>
+      <p>⭐ 4.6 (548 reviews)</p>
+      <p>🍷 Refined Italian classics in a 12th-century building</p>
     </div>
 
     <div class="restaurant">
       <h3><a href="https://www.hostariasaccofiorentino.it/" target="_blank">Hostaria Il Sacco Fiorentino</a></h3>
       <p>📍 Via Giusto Turazza, 13, 56048 Volterra PI, Italy</p>
-      <p>⭐ Rating: 4.5 (307 reviews)</p>
+      <p>⭐ 4.5 (307 reviews)</p>
+      <p>🍽️ Cozy spot with regional specialties</p>
     </div>
 
-    <h2>Interactive Route Map</h2>
-    <div id="map" class="map"></div>
+    <div class="restaurant">
+      <h3><a href="https://www.lasostadelpriore.com/" target="_blank">La Sosta del Priore</a></h3>
+      <p>📍 Vicolo delle Prigioni, 1/2, 56048 Volterra PI, Italy</p>
+      <p>⭐ 4.8 (1180 reviews)</p>
+      <p>🥪 Gourmet sandwiches with local ingredients</p>
+    </div>
+
+    <div class="restaurant">
+      <h3><a href="http://www.osteriadeipoeti.it/" target="_blank">Osteria dei Poeti Volterra</a></h3>
+      <p>📍 Via Giacomo Matteotti, 55, 56048 Volterra PI, Italy</p>
+      <p>⭐ 4.3 (392 reviews)</p>
+      <p>🍷 Traditional Tuscan cuisine in a poetic setting</p>
+    </div>
   </div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([43.3188, 11.3308], 10); // Centered near Siena
+    const map = L.map('map').setView([43.3905, 10.8596], 10); // Centered between Siena and Volterra
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    const start = L.marker([43.3188, 11.3308]).addTo(map)
-      .bindPopup('B&B I Tetti di Siena').openPopup();
+    const route = [
+      [43.3188, 11.3308], // Siena
+      [43.4222, 11.0415], // Colle di Val d’Elsa
+      [43.3977, 10.8610]  // Volterra
+    ];
 
-    const end = L.marker([43.4016, 10.8646]).addTo(map)
-      .bindPopup('Villa Nencini, Volterra');
-
-    const route = L.polyline([
-      [43.3188, 11.3308],
-      [43.3556, 11.0450],
-      [43.4016, 10.8646]
-    ], {
-      color: 'blue',
-      weight: 4,
-      opacity: 0.7
-    }).addTo(map);
-
-    map.fitBounds(route.getBounds());
+    L.polyline(route, { color: 'blue' }).addTo(map);
+    L.marker([43.3188, 11.3308]).addTo(map).bindPopup("Start: B&B I Tetti di Siena");
+    L.marker([43.3977, 10.8610]).addTo(map).bindPopup("End: Villa Nencini");
   </script>
 </body>
 </html>
-
